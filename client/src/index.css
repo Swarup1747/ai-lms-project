@@ -1,0 +1,445 @@
+@import "tailwindcss";
+/* 1. MODERN VARIABLES */
+:root {
+  /* Gradients & Brand Colors */
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); /* Violet-Purple */
+  --secondary-gradient: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%); /* Blue-Teal */
+  --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); /* Orange-Red */
+  
+  --bg-body: #f3f4f6;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  
+  /* Modern Effects */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+  --glass-blur: blur(12px);
+  
+  --shadow-float: 0 10px 40px -10px rgba(0,0,0,0.1);
+  --shadow-hover: 0 20px 50px -12px rgba(99, 102, 241, 0.25);
+  
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-pill: 50px;
+}
+
+/* 2. GLOBAL RESET & TYPOGRAPHY */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', sans-serif; /* Modern Tech Font */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout Fixes (From previous step) */
+html, body, #root { height: 100%; }
+.app-container { display: flex; flex-direction: column; min-height: 100vh; }
+.main-content { flex: 1; width: 100%; }
+
+/* 3. HEADINGS & TEXT */
+h1, h2, h3 {
+  font-family: 'Outfit', sans-serif; /* Bold Display Font */
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+}
+
+/* Gradient Text Class */
+.text-gradient {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 4. MODERN BUTTONS */
+button, .btn {
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Primary Button (Gradient) */
+button, .btn-primary {
+  background: var(--primary-gradient);
+  color: white;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+button:hover, .btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+button:active { transform: scale(0.98); }
+
+/* 5. GLASS NAVBAR */
+.navbar {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: var(--glass-border);
+  padding: 1.2rem 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links a {
+  font-weight: 600;
+  color: var(--text-main);
+  margin-left: 2rem;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #6366f1; }
+
+/* 6. MODERN CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+  padding: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.course-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0,0,0,0.03);
+  box-shadow: var(--shadow-float);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-image {
+  height: 200px;
+  background: var(--secondary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: white;
+  position: relative;
+}
+/* Overlay effect on image */
+.card-image::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+}
+
+.card-body { padding: 2rem; }
+.card-title { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.card-price { 
+  font-size: 1.5rem; 
+  font-weight: 800; 
+  color: #10b981; /* Emerald */
+  display: block;
+  margin-top: 10px;
+}
+
+/* 7. HERO SECTION (Big & Bold) */
+.hero {
+  text-align: center;
+  padding: 8rem 2rem 6rem;
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.1), transparent 40%);
+}
+
+.hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
+.hero p { font-size: 1.4rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 3rem; }
+
+/* Search Bar Styling */
+input[type="text"] {
+  border: 2px solid transparent;
+  background: white;
+  border-radius: var(--radius-pill);
+  padding: 18px 30px;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-float);
+  transition: all 0.3s;
+  width: 100%;
+  max-width: 600px;
+}
+input[type="text"]:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+/* 8. FOOTER */
+.footer {
+  background: #0f172a;
+  color: white;
+  padding: 5rem 2rem 2rem;
+  margin-top: auto;
+}
+.footer h3 { color: white; }
+.footer a { color: #94a3b8; text-decoration: none; }
+.footer a:hover { color: white; text-decoration: underline; }
+
+/* ... (Keep your existing CSS above) ... */
+
+/* 9. COURSE PLAYER & AI INTERFACE */
+.player-container {
+  display: flex;
+  height: calc(100vh - 85px); /* Adjusts for navbar */
+  overflow: hidden;
+  background: var(--bg-body);
+}
+
+/* Left: Main Content */
+.player-main {
+  flex: 3;
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+.video-wrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-float);
+  background: black;
+  margin-bottom: 1.5rem;
+}
+
+.lesson-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  background: var(--text-main);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.lesson-desc {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 800px;
+}
+
+/* Right: Sidebar */
+.player-sidebar {
+  flex: 1;
+  min-width: 380px;
+  background: var(--bg-card);
+  border-left: 1px solid rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.03);
+  position: relative;
+  z-index: 10;
+}
+
+/* Tabs */
+.tab-header {
+  display: flex;
+  padding: 1.5rem 1.5rem 0;
+  gap: 1rem;
+  background: var(--bg-card);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab-btn:hover {
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.tab-btn.active {
+  color: #6366f1;
+  border-bottom-color: #6366f1;
+}
+
+.sidebar-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+/* Lesson Items */
+.lesson-item {
+  padding: 1.2rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  margin-bottom: 0.8rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: transparent;
+}
+
+.lesson-item:hover {
+  background: #f8fafc;
+  transform: translateX(5px);
+}
+
+.lesson-item.active {
+  background: white;
+  border-color: rgba(99, 102, 241, 0.2);
+  box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.15);
+}
+
+.lesson-number {
+  background: #e2e8f0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.lesson-item.active .lesson-number {
+  background: var(--primary-gradient);
+  color: white;
+}
+
+/* AI Section styling */
+.ai-mode-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 25px;
+  background: #f1f5f9;
+  padding: 5px;
+  border-radius: var(--radius-pill);
+}
+
+.ai-mode-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius-pill);
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-muted);
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.ai-mode-btn.active {
+  background: white;
+  color: var(--text-main);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.ai-textarea {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 2px solid #e2e8f0;
+  background: white;
+  font-family: inherit;
+  resize: none;
+  transition: all 0.3s;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.ai-textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.ai-result-box {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(to bottom right, #f8fafc, #fff);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0,0,0,0.05);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-main);
+  animation: fadeIn 0.5s ease;
+}
+
+/* Quiz Options */
+.quiz-option {
+  padding: 1.2rem;
+  border: 2px solid #f1f5f9;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-option:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+}
+
+/* Dynamic Quiz Colors */
+.quiz-option.correct {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  color: #15803d;
+}
+
+.quiz-option.wrong {
+  background: #fef2f2;
+  border-color: #ef4444;
+  color: #b91c1c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
