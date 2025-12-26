@@ -27,7 +27,7 @@ function CreateCourse() {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/courses/create', {
+            const response = await axios.post('https://ai-lms-project.onrender.com/api/courses/create', {
                 ...courseData,
                 educatorId: user.id, // Sends the correct ID
                 lessons: [] 

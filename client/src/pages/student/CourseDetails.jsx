@@ -10,7 +10,7 @@ function CourseDetails() {
     const [course, setCourse] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/courses/${courseId}`)
+        axios.get(`https://ai-lms-project.onrender.com/api/courses/${courseId}`)
             .then(res => setCourse(res.data.course))
             .catch(err => console.error(err));
     }, [courseId]);
@@ -22,7 +22,7 @@ function CourseDetails() {
         // For now, we proceed to payment.
 
         try {
-            const response = await axios.post('http://localhost:5000/api/payment/create-checkout-session', {
+            const response = await axios.post('https://ai-lms-project.onrender.com/api/payment/create-checkout-session', {
                 courseName: course.title,
                 coursePrice: course.price,
                 courseId: course._id,

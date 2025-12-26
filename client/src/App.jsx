@@ -31,7 +31,7 @@ function App() {
       return;
     }
 
-    axios.get(`http://localhost:5000/api/users/${user.id}`)
+    axios.get(`https://ai-lms-project.onrender.com/api/users/${user.id}`)
       .then(res => {
         if (!res.data.role) {
           navigate('/onboarding');

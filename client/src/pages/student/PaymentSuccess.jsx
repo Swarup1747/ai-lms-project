@@ -14,7 +14,7 @@ function PaymentSuccess() {
             if (courseId && userId) {
                 try {
                     // Call the enrollment API we built earlier
-                    await axios.post('http://localhost:5000/api/users/enroll', {
+                    await axios.post('https://ai-lms-project.onrender.com/api/users/enroll', {
                         clerkId: userId,
                         courseId: courseId
                     });

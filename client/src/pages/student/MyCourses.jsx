@@ -10,7 +10,7 @@ function MyCourses() {
 
     useEffect(() => {
         if (isLoaded && user) {
-            axios.get(`http://localhost:5000/api/users/${user.id}/enrolled`)
+            axios.get(`https://ai-lms-project.onrender.com/api/users/${user.id}/enrolled`)
                 .then(res => setCourses(res.data.courses))
                 .catch(err => console.error(err));
         }

@@ -24,7 +24,7 @@ function CoursePlayer() {
     useEffect(() => {
         const fetchCourse = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/courses/${courseId}`);
+                const res = await axios.get(`https://ai-lms-project.onrender.com/api/courses/${courseId}`);
                 const fetchedCourse = res.data.course;
                 setCourse(fetchedCourse);
                 if (fetchedCourse.lessons && fetchedCourse.lessons.length > 0) {
@@ -63,7 +63,7 @@ function CoursePlayer() {
         setIsCorrect(null);
 
         try {
-            const res = await axios.post('http://localhost:5000/api/ai/process', {
+            const res = await axios.post('https://ai-lms-project.onrender.com/api/ai/process', {
                 type: type,
                 content: currentLesson?.content || "",
                 videoUrl: currentLesson?.videoUrl,

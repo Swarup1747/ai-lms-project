@@ -22,7 +22,7 @@ function Dashboard() {
 
     const fetchEducatorCourses = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/courses/educator/${user.id}`);
+            const res = await axios.get(`https://ai-lms-project.onrender.com/api/courses/educator/${user.id}`);
             
             // SAFETY CHECK: Handle different response formats
             const fetchedCourses = res.data.courses || [];

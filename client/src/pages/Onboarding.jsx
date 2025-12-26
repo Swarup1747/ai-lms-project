@@ -11,7 +11,7 @@ function Onboarding() {
     const selectRole = async (role) => {
         setIsLoading(true);
         try {
-            await axios.post('http://localhost:5000/api/users/role', {
+            await axios.post('https://ai-lms-project.onrender.com/api/users/role', {
                 clerkId: user.id,
                 email: user.primaryEmailAddress.emailAddress,
                 role: role
